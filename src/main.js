@@ -8,7 +8,7 @@ import iconError from "./img/error.svg";
 const form = document.querySelector(".form");
 const input = document.querySelector("[name='search-text']");
 const gallery = document.querySelector(".gallery");
-const loader = document.querySelector(".span");
+const loader = document.querySelector(".span").classList.remove("loader");
 
 
 form.addEventListener("submit", handleSubmit);
