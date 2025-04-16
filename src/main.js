@@ -19,8 +19,17 @@ function handleSubmit(event) {
     clearGallery();
 
     const userRequest = input.value.trim();
-    if (userRequest=== "") {
-        return;
+    if (!userRequest) {
+        iziToast.show({
+     message: 'Please write your request!',
+     backgroundColor: '#ef4040',
+     messageColor: '#ffffff',
+     iconUrl: iconError,
+     position: 'topRight'
+        })
+
+        form.reset();
+     return;
     }
 
     showLoader();
@@ -34,7 +43,7 @@ function handleSubmit(event) {
                 messageColor: '#fafafb',
                 backgroundColor: '#ef4040',
                 iconUrl: iconError,
-                position: 'topRight'
+               position: 'topRight'
             })
             return;
         }
@@ -43,8 +52,17 @@ function handleSubmit(event) {
 
     })
         .catch(error => {
-            console.log(error);
+            console.log(error.message);
+            iziToast.show({
+                title: 'ERROR',
+                titleColor: '#ffffff',
+                message: 'Error connecting to server',
+                messageColor: '#ffffff',
+                iconUrl: iconError,
+                backgroundColor: '#B51B1B',
+                position: 'topRight'})
         })
+
     .finally(() => {
       hideLoader();
     });
